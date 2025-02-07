@@ -32,7 +32,7 @@ const AddUser = ({ onClose, editingUser }) => {
 
     return (
         <div className="add-user">
-            <h2>{editingUser ? "Edit User" : "Add New User"}</h2>
+            <h2>{editingUser ? "Edit Post" : "Add New Post"}</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
