@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../Redux/counterSlice"; 
 import AddUser from "./AddUser"; 
-import "../App.css"
+import "../App.css";
 
 const User = () => {
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const [showAddUser, setShowAddUser] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleDelete = (id) => {
     dispatch(deleteUser(id));
@@ -18,6 +19,13 @@ const User = () => {
     setEditingUser(user);
     setShowAddUser(true);
   };
+
+  // Filter users based on search query
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="user-1">
@@ -30,6 +38,15 @@ const User = () => {
 
       {showAddUser && <AddUser onClose={() => setShowAddUser(false)} editingUser={editingUser} />}
 
+      {/* Search Input Field */}
+      <input
+        type="text"
+        placeholder="Search by Name, Email, or Title"
+        className="search-input"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+
       <table className="user-table">
         <thead>
           <tr>
@@ -40,7 +57,7 @@ const User = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((item) => (
+          {filteredUsers.map((item) => (
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>{item.email}</td>

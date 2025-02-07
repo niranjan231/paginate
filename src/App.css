@@ -137,6 +137,17 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   outline: none;
 }
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 8px;
+  width: 40%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 
 .add-btn {
   background: #007bff;
