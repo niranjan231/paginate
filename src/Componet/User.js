@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../Redux/counterSlice"; 
 import AddUser from "./AddUser"; 
-import "../App.css";
+import "../App.css"
 
 const User = () => {
   const users = useSelector((state) => state.users.users);
@@ -15,14 +15,14 @@ const User = () => {
   };
 
   const handleEdit = (user) => {
-    setEditingUser(user); // Set the user to be edited
-    setShowAddUser(true); // Show the AddUser form
+    setEditingUser(user);
+    setShowAddUser(true);
   };
 
   return (
     <div className="user-1">
       <button className="post-btn" onClick={() => {
-        setEditingUser(null); // Reset editing state for new user
+        setEditingUser(null);
         setShowAddUser(!showAddUser);
       }}>
         {showAddUser ? "Close" : "Post"}

@@ -9,7 +9,7 @@ const AddUser = ({ onClose, editingUser }) => {
 
     useEffect(() => {
         if (editingUser) {
-            setUser(editingUser); // Populate form with editing user details
+            setUser(editingUser);
         }
     }, [editingUser]);
 
@@ -21,9 +21,9 @@ const AddUser = ({ onClose, editingUser }) => {
         e.preventDefault();
         if (user.name && user.email && user.title) {
             if (editingUser) {
-                dispatch(editUser(user)); // Dispatch edit action
+                dispatch(editUser(user));
             } else {
-                dispatch(addUser(user)); // Dispatch add action
+                dispatch(addUser(user));
             }
             setUser({ name: "", email: "", title: "" });
             onClose();
